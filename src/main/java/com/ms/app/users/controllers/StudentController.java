@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ms.app.commons.controllers.CommonController;
-import com.ms.app.users.models.entity.Student;
+import com.ms.app.commonsstudents.models.entity.Student;
 import com.ms.app.users.services.StudentService;
 
 @RestController
