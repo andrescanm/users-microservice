@@ -19,7 +19,7 @@ public class StudentController extends CommonController<Student, StudentService>
 	@PutMapping("/{id}")
 	public ResponseEntity<?> editStudent(@RequestBody Student studentRequest, @PathVariable Long id) {
 		Optional<Student> optional = _service.findById(id);
-		if (optional.isEmpty()) {
+		if (!optional.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		Student studentEdit = optional.get();
