@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,11 @@ public class StudentController extends CommonController<Student, StudentService>
 		studentEdit.setLastname(studentRequest.getLastname());
 		studentEdit.setEmail(studentRequest.getEmail());
 		return ResponseEntity.status(HttpStatus.CREATED).body(_service.save(studentEdit));
+	}
+
+	@GetMapping("/search/{term}")
+	public ResponseEntity<?> search(@PathVariable String term) {
+		return ResponseEntity.ok(_service.findByNameOrLastName(term));
 	}
 
 }
